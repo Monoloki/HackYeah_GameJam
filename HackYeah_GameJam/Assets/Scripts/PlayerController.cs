@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour {
     [Header("General")]
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private PlayerUiController ui;
+    [SerializeField] private PlayerWarningController warningUi;
     [Header("Human Stats")]
     [SerializeField] private Vector2 MoveInput = Vector2.zero;
     [SerializeField] private float RotationInput;
@@ -15,7 +17,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private bool isRotating = false;
     [Header("Wurm stats")]
     [SerializeField] private bool canInteract = true;
-    [SerializeField] private float timeout = 3;
+    [SerializeField] private int timeout = 3;
     [SerializeField] private float forceMultiplayer = 20;
     [SerializeField] private float velocityMax = 3;
 
@@ -33,7 +35,6 @@ public class PlayerController : MonoBehaviour {
         map.Default.Rotate.canceled += Rotate;
 
         map.Default.InteractWithPlayer.performed += InteractWithPlayer;
-        map.Default.InteractWithPlayer.canceled += InteractWithPlayer;
     }
 
     private void OnDisable() {
@@ -44,7 +45,6 @@ public class PlayerController : MonoBehaviour {
         map.Default.Rotate.canceled -= Rotate;
 
         map.Default.InteractWithPlayer.performed -= InteractWithPlayer;
-        map.Default.InteractWithPlayer.canceled -= InteractWithPlayer;
 
         map.Default.Disable();
     }
@@ -77,9 +77,24 @@ public class PlayerController : MonoBehaviour {
 
     private void InteractWithPlayer(InputAction.CallbackContext ctx) {
         if (canInteract) {
-            StartCoroutine(SetTimeout());
             rb.AddForce(new Vector3(-ctx.ReadValue<Vector2>().y, 0, ctx.ReadValue<Vector2>().x) * forceMultiplayer, ForceMode.Impulse);
-            //rb.AddRelativeForce(new Vector3(-ctx.ReadValue<Vector2>().y, 0, ctx.ReadValue<Vector2>().x) * forceMultiplayer, ForceMode.Impulse);
+
+
+            if (-ctx.ReadValue<Vector2>().y == -1) {
+                warningUi.StartCoroutine("ShowWarning", SiteEnum.up);
+            }
+            else if (-ctx.ReadValue<Vector2>().y == 1) {
+                warningUi.StartCoroutine("ShowWarning", SiteEnum.down);
+            }
+            else if (ctx.ReadValue<Vector2>().x == 1) {
+                warningUi.StartCoroutine("ShowWarning", SiteEnum.left);
+            }
+            else if (ctx.ReadValue<Vector2>().x == -1) {
+                warningUi.StartCoroutine("ShowWarning", SiteEnum.right);
+            } 
+           
+            StartCoroutine(SetTimeout());
+            ui.StartCountdown(timeout);
         }
     }
 
@@ -87,5 +102,6 @@ public class PlayerController : MonoBehaviour {
         canInteract = false;
         yield return (new WaitForSeconds(timeout));
         canInteract = true;
+        yield return new WaitForFixedUpdate();
     }
 }
