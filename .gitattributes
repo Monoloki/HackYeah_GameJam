@@ -6,6 +6,8 @@
 *.shader text eol=lf
 * text eol=lf
 
+
+
 ##	Common Files
 *.unity text eol=lf -merge
 *.prefab text eol=lf -merge
