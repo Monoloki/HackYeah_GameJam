@@ -8,8 +8,11 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private Rigidbody rb;
     [Header("Human Stats")]
     [SerializeField] private Vector2 MoveInput = Vector2.zero;
+    [SerializeField] private float RotationInput;
     [SerializeField] private float speedMultiplayer = 3;
+    [SerializeField] private float speedRotation = 3;
     [SerializeField] private bool isMoving = false;
+    [SerializeField] private bool isRotating = false;
     [Header("Wurm stats")]
     [SerializeField] private bool canInteract = true;
     [SerializeField] private float timeout = 3;
@@ -48,8 +51,13 @@ public class PlayerController : MonoBehaviour {
 
     private void FixedUpdate() {
         if (isMoving && rb.velocity.magnitude < velocityMax) {
-            rb.AddRelativeForce(new Vector3(-MoveInput.y, 0, MoveInput.x) * speedMultiplayer, ForceMode.Force);
+            rb.AddRelativeForce(new Vector3(-MoveInput.y, 0, MoveInput.x) * speedMultiplayer , ForceMode.Force);
         }
+
+        if (isRotating) {
+            transform.Rotate(Vector3.up * RotationInput * speedRotation * Time.fixedDeltaTime);
+        }
+
     }
 
     private void SetMove(InputAction.CallbackContext ctx) {
@@ -63,7 +71,8 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Rotate(InputAction.CallbackContext ctx) {
-
+        RotationInput = ctx.ReadValue<float>();
+        isRotating = !isRotating;
     }
 
     private void InteractWithPlayer(InputAction.CallbackContext ctx) {
