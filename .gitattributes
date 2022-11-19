@@ -4,7 +4,7 @@
 *.cs text eol=lf diff=csharp
 *.cginc text eol=lf
 *.shader text eol=lf
-*. text eol=lf
+* text eol=lf
 
 ##	Common Files
 *.unity text eol=lf -merge
