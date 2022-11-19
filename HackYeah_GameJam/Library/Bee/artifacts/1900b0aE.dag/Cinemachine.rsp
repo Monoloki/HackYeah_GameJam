@@ -119,11 +119,17 @@
 -define:CINEMACHINE_PHYSICS_2D
 -define:CINEMACHINE_PHYSICS
 -define:CINEMACHINE_UGUI
+-define:CINEMACHINE_LWRP_7_3_1
 -define:CINEMACHINE_UNITY_INPUTSYSTEM
 -define:CINEMACHINE_UNITY_ANIMATION
 -define:CINEMACHINE_UNITY_IMGUI
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
+-r:"D:/HackYeah_repository/HackYeah_GameJam/HackYeah_GameJam/Library/PackageCache/com.unity.burst@1.6.5/Unity.Burst.CodeGen/Unity.Burst.Cecil.dll"
+-r:"D:/HackYeah_repository/HackYeah_GameJam/HackYeah_GameJam/Library/PackageCache/com.unity.burst@1.6.5/Unity.Burst.CodeGen/Unity.Burst.Cecil.Mdb.dll"
+-r:"D:/HackYeah_repository/HackYeah_GameJam/HackYeah_GameJam/Library/PackageCache/com.unity.burst@1.6.5/Unity.Burst.CodeGen/Unity.Burst.Cecil.Pdb.dll"
+-r:"D:/HackYeah_repository/HackYeah_GameJam/HackYeah_GameJam/Library/PackageCache/com.unity.burst@1.6.5/Unity.Burst.CodeGen/Unity.Burst.Cecil.Rocks.dll"
+-r:"D:/HackYeah_repository/HackYeah_GameJam/HackYeah_GameJam/Library/PackageCache/com.unity.burst@1.6.5/Unity.Burst.Unsafe.dll"
 -r:"D:/HackYeah_repository/HackYeah_GameJam/HackYeah_GameJam/Library/PackageCache/com.unity.collab-proxy@1.15.18/Lib/Editor/PlasticSCM/log4netPlastic.dll"
 -r:"D:/HackYeah_repository/HackYeah_GameJam/HackYeah_GameJam/Library/PackageCache/com.unity.collab-proxy@1.15.18/Lib/Editor/PlasticSCM/Unity.Plastic.Antlr3.Runtime.dll"
 -r:"D:/HackYeah_repository/HackYeah_GameJam/HackYeah_GameJam/Library/PackageCache/com.unity.collab-proxy@1.15.18/Lib/Editor/PlasticSCM/Unity.Plastic.Newtonsoft.Json.dll"
@@ -340,6 +346,8 @@
 -r:"D:/Program Files/Unity/2021.3.5f1/Editor/Data/NetStandard/ref/2.1.0/netstandard.dll"
 -r:"D:/Program Files/Unity/2021.3.5f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.InputSystem.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.RenderPipelines.Core.Runtime.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.RenderPipelines.Universal.Runtime.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Timeline.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
